@@ -4,7 +4,7 @@ image: node:6
 before_script:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
   - eval $(ssh-agent -s)
-  - ssh-add <(echo "$CI_KEY")
+  - ssh-add <(echo "$CI_KEY" | base64 --decode)
   - npm -v
   - npm install
   - mkdir -p ~/.ssh
