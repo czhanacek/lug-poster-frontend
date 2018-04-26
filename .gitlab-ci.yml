@@ -8,7 +8,7 @@ before_script:
   - eval $(ssh-agent -s)
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
-  - echo "$CI_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  - ssh-add <(echo "$CI_KEY")
 
 
 stages:
