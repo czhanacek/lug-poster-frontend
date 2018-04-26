@@ -16,10 +16,12 @@ stages:
   - deploy
 
 build:
+  stage: build
   script:
     - npm build
 
 deploy:
+  stage: deploy
   script:
     - rsync -a build/ ci@wsu.party:build/
     
