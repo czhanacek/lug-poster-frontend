@@ -8,6 +8,10 @@ before_script:
   - echo "$CI_KEY" | tr -d '\r' | ssh-add - > /dev/null
 
 
+stages:
+  - build
+  - deploy
+
 build:
   script:
     - npm build
