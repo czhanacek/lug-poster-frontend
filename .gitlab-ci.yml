@@ -2,11 +2,11 @@ image: node:6
 
 
 before_script:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - eval $(ssh-agent -s)
   - ssh-add <(echo "$CI_KEY")
   - npm -v
   - npm install
-  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-  - eval $(ssh-agent -s)
   - mkdir -p ~/.ssh
   - chmod 700 ~/.ssh
 
