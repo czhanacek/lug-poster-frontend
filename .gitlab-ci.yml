@@ -25,5 +25,5 @@ deploy:
     - pwd
     - ssh-add
     - apk add --no-cache rsync
-    - rsync -a --delete build/ ci@wsu.party:
+    - rsync -a --delete build/ ci@wsu.party:build/
     
