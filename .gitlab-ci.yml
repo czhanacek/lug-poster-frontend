@@ -1,25 +1,11 @@
 
 
-
-before_script:
-  - mkdir -p ~/.ssh
-  - chmod 700 ~/.ssh
-  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-  - eval $(ssh-agent)
-  - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-  - chmod 700 ~/.ssh/id_rsa
-  - pwd
-  - ssh-add
-
-
-
-
-
 stages:
   - build
   - deploy
 
 build:
+  image: node:6
   stage: build
   script:
     - npm -v
@@ -30,6 +16,14 @@ deploy:
   image: alpine
   stage: deploy
   script:
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - 'which ssh-agent || ( apk add openssh-client )'
+    - eval $(ssh-agent)
+    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 700 ~/.ssh/id_rsa
+    - pwd
+    - ssh-add
     - apk add --no-cache rsync
-    - rsync -a build/ ci@wsu.party:build/
+    - rsync -a --delete build/ ci@wsu.party:
     
