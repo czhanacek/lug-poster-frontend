@@ -8,6 +8,7 @@ before_script:
   - eval $(ssh-agent -s)
   - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
   - chmod 700 ~/.ssh/id_rsa
+  - pwd
   - ssh-add
   - npm -v
   - npm install
