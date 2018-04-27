@@ -21,6 +21,7 @@ deploy:
     - 'which ssh-agent || ( apk add --no-cache openssh-client )'
     - eval $(ssh-agent)
     - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
     - chmod 700 ~/.ssh/id_rsa
     - pwd
     - ssh-add
