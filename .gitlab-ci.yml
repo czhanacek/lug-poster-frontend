@@ -1,4 +1,4 @@
-image: node:6
+
 
 
 before_script:
@@ -10,8 +10,7 @@ before_script:
   - chmod 700 ~/.ssh/id_rsa
   - pwd
   - ssh-add
-  - npm -v
-  - npm install
+
 
 
 
@@ -23,9 +22,12 @@ stages:
 build:
   stage: build
   script:
+    - npm -v
+    - npm install
     - npm build
 
 deploy:
+  image: alpine
   stage: deploy
   script:
     - apk add --no-cache rsync
