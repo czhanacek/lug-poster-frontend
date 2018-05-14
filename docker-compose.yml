@@ -1,0 +1,8 @@
+version: '3'
+services:
+  lug-poster-frontend:
+    image: czhanacek/lug-poster-frontend
+    build: .
+    ports:
+      - "80:80"
+  restart: always

@@ -20,15 +20,13 @@
         <input type="checkbox" id="pizza-checkbox" v-model="pizza">
         <label for="pizza-checkbox">Pizza provided at event</label>
         <br />
-        
+        <button class="button" v-on:click="test()">Submit</button>
     </div>
 </template>
 
 
 
 <script>
-
-
 
 
 module.exports = {
@@ -50,8 +48,14 @@ module.exports = {
     mounted: function () {
         
         
+    },
+
+    methods: {
+        test: function() {
+            $.post("lug-poster-backend.wsu.party") // not finished
+        } 
     }
-        
+    
 }
 </script>
 
